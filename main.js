@@ -1,5 +1,5 @@
 const freelancers = [];
-const maxFreelancers = 20;
+const maxFreelancers = 15;
   
 const randomNames = [
     "Michael B.",
@@ -40,9 +40,7 @@ const randomOccupations = [
   
 const calculateAveragePrice = () => {
     const total = freelancers.reduce(
-      (sum, freelancer) => sum + freelancer.price,
-      0
-    );
+      (sum, freelancer) => sum + freelancer.price,0);
     return freelancers.length === 0 ? 0 : total / freelancers.length;
 };
   
@@ -53,11 +51,10 @@ const addFreelancerIntervalId = setInterval(addFreelancer, 2000);
 function render() {
     const freelancersId = document.querySelector("#freelancers");
     freelancersId.innerHTML =
-      /* html*/
       `<tr>
         <th>Name</th>
         <th>Occupation</th>
-        <th>Starting Price</th>
+        <th>Price</th>
        </tr>`;
   
     freelancers.forEach((freelancer) => {
@@ -84,10 +81,9 @@ function render() {
     });
   }
   
-  /**
-   * Add a random freelancer to the `freelancers` array
-   */
-  function addFreelancer() {
+  
+
+function addFreelancer() {
     const name = randomNames[Math.floor(Math.random() * randomNames.length)];
     const price = randomPrices[Math.floor(Math.random() * randomPrices.length)];
     const occupation =
@@ -95,11 +91,10 @@ function render() {
   
     freelancers.push({ name, price, occupation });
   
-    render();
+render();
   
-    // Stop adding freelancers if we've reached the maximum number of freelancers
-    if (freelancers.length >= maxFreelancers) {
-      clearInterval(addFreelancerIntervalId);
-    }
-  }
+if (freelancers.length >= maxFreelancers) {
+      clearInterval(addFreelancerIntervalId)
+    };
+}
   
